@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/screen_padding"
+    tools:context=".ui.products.addproduct.AddProductFragment"
+    tools:ignore="MissingConstraints">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:flow_verticalBias="0"
+        app:flow_verticalStyle="packed"
+        app:flow_verticalGap="16dp"
+        app:constraint_referenced_ids="image_product,
+        input_layout_description, input_layout_price, button_add_product"/>
+
+    <ImageView
+        android:id="@+id/image_product"
+        android:layout_width="136dp"
+        android:layout_height="136dp"
+        android:background="@drawable/background_product_image"
+        android:importantForAccessibility="no"
+        android:padding="16dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/ic_add_a_photo"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_product_field_description_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:maxLines="1"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_product_field_price_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLines="1"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_add_product"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/add_product_button_add_product"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
