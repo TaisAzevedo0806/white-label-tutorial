@@ -9,9 +9,31 @@ import androidx.lifecycle.viewModelScope
 import br.com.douglasmotta.whitelabeltutorial.R
 import br.com.douglasmotta.whitelabeltutorial.domain.usecase.CreateProductUseCase
 import br.com.douglasmotta.whitelabeltutorial.util.fromCurrency
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AddProductViewModel(private val createProductUseCase: CreateProductUseCase) : ViewModel() {
+/**
+ * @HiltViewModel
+ *
+ * Inform Dagger that this ViewModel will be injected.
+ *
+ *
+ *
+ * @Inject constructor
+ *
+ * Teach Dagger how to build the dependency for the injection of this class.
+ *
+ * If one of the constructor parameters implements a interface, a DomainModule must be created to tell to Dagger which
+ * implementation of that interface must be used on dependency injection.
+ *
+ * If the parameter does not implement a interface, just use @Injection constructor.
+ *
+ */
+
+@HiltViewModel
+class AddProductViewModel @Inject constructor(private val createProductUseCase: CreateProductUseCase) :
+    ViewModel() {
 
     private val _imageUriErrorResId = MutableLiveData<Int>()
     val imageUriErrorResId: LiveData<Int> = _imageUriErrorResId

@@ -7,12 +7,24 @@ import br.com.douglasmotta.whitelabeltutorial.util.COLLECTION_PRODUCTS
 import br.com.douglasmotta.whitelabeltutorial.util.COLLECTION_ROOT
 import br.com.douglasmotta.whitelabeltutorial.util.STORAGE_IMAGES
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
+import javax.inject.Inject
 import kotlin.coroutines.suspendCoroutine
 
-class FirebaseProductDataSource(
+/**
+ * @Inject constructor
+ *
+ * Teach Dagger how to build the dependency for the injection of this class.
+ *
+ * If one of the constructor parameters implements a interface, a DomainModule must be created to tell to Dagger which
+ * implementation of that interface must be used on dependency injection.
+ *
+ * If the parameter does not implement a interface, just use @Injection constructor.
+ *
+ */
+
+class FirebaseProductDataSource @Inject constructor(
     firebaseFirestore: FirebaseFirestore,
     firebaseStorage: FirebaseStorage
 ) : ProductDataSource {

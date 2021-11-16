@@ -8,7 +8,18 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import br.com.douglasmotta.whitelabeltutorial.R
 import br.com.douglasmotta.whitelabeltutorial.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * @AndroidEntryPoint
+ *
+ * Informs Dagger that this Activity or Fragment will use DI (Dependency Injection).
+ *
+ * As the Fragments contained in this Activity will use DI, we need to annotate it as well.
+ *
+ */
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController

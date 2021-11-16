@@ -2,8 +2,21 @@ package br.com.douglasmotta.whitelabeltutorial.data
 
 import android.net.Uri
 import br.com.douglasmotta.whitelabeltutorial.domain.model.Product
+import javax.inject.Inject
 
-class ProductRepository(private val dataSource: ProductDataSource) {
+/**
+ * @Inject constructor
+ *
+ * Teach Dagger how to build the dependency for the injection of this class.
+ *
+ * If one of the constructor parameters implements a interface, a DomainModule must be created to tell to Dagger which
+ * implementation of that interface must be used on dependency injection.
+ *
+ * If the parameter does not implement a interface, just use @Injection constructor.
+ *
+ */
+
+class ProductRepository @Inject constructor(private val dataSource: ProductDataSource) {
 
     suspend fun getProducts(): List<Product> = dataSource.getProducts()
 
