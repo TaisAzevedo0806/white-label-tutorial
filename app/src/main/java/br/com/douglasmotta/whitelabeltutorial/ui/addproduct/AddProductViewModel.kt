@@ -32,8 +32,7 @@ import javax.inject.Inject
  */
 
 @HiltViewModel
-class AddProductViewModel @Inject constructor(private val createProductUseCase: CreateProductUseCase) :
-    ViewModel() {
+class AddProductViewModel @Inject constructor(private val createProductUseCase: CreateProductUseCase) : ViewModel() {
 
     private val _imageUriErrorResId = MutableLiveData<Int>()
     val imageUriErrorResId: LiveData<Int> = _imageUriErrorResId

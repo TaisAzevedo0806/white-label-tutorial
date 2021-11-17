@@ -5,12 +5,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import br.com.douglasmotta.whitelabeltutorial.databinding.FragmentProductsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * @AndroidEntryPoint
+ *
+ * Informs Dagger that this Activity or Fragment will use DI (Dependency Injection).
+ *
+ *
+ * by viewModels()
+ *
+ * Dagger will create a instance of the view model.
+ *
+ */
+
+@AndroidEntryPoint
 class ProductsFragment : Fragment() {
 
     private var _binding: FragmentProductsBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: ProductsViewModel by viewModels()
+
+    private val productsAdapter = ProductsAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,5 +38,32 @@ class ProductsFragment : Fragment() {
     ): View {
         _binding = FragmentProductsBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setRecyclerView()
+        observeVMEvents()
+
+        viewModel.getProducts()
+    }
+
+    private fun setRecyclerView() {
+        binding.recyclerProducts.run {
+            // All items has the same size
+            setHasFixedSize(true)
+            adapter = productsAdapter
+        }
+    }
+
+    private fun observeVMEvents() {
+        viewModel.productsData.observe(viewLifecycleOwner) { products -> productsAdapter.submitList(products) }
+    }
+
+    override fun onDestroyView() {
+        // Following the documentation, the _binding variable must be cleared when the view is destroyed
+        _binding = null
+        super.onDestroyView()
     }
 }

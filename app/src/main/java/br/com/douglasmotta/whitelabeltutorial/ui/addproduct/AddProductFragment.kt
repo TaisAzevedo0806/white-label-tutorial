@@ -18,6 +18,11 @@ import dagger.hilt.android.AndroidEntryPoint
  *
  * Informs Dagger that this Activity or Fragment will use DI (Dependency Injection).
  *
+ *
+ * by viewModels()
+ *
+ * Dagger will create a instance of the view model.
+ *
  */
 
 @AndroidEntryPoint
