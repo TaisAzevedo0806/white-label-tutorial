@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/screen_padding"
-    tools:context=".ui.products.addproduct.AddProductFragment"
+    tools:context=".ui.addproduct.AddProductFragment"
     tools:ignore="MissingConstraints">
 
     <androidx.constraintlayout.helper.widget.Flow
